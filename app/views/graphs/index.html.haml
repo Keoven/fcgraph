@@ -1,6 +1,7 @@
 =javascript_include_tag 'jquery.idTabs.min.js'
 =javascript_include_tag 'swfobject.js'
-=stylesheet_link_tag 'graph.css'
+=content_for :css do
+  =stylesheet_link_tag 'graph.css'
 
 :javascript
   $(document).ready(function () {

@@ -1,4 +1,5 @@
-=stylesheet_link_tag 'home.css'
+=content_for :css do
+  =stylesheet_link_tag 'home.css'
 .main_container
   .content_container
     =form_tag graphs_index_path, :multipart => true do
