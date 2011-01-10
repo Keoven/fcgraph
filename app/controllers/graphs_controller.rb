@@ -64,7 +64,7 @@ class GraphsController < ApplicationController
 
         @data = @data.select do |d|
           if(player == d[:player] && tag == d[:tag])
-            line.values[@turns.key(d[:turn])] = d[:value]
+            line.values[@turns.index(d[:turn])] = d[:value]
             max_value = d[:value] if max_value < d[:value]
             false
           else
