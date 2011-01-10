@@ -7,11 +7,11 @@ class GraphsController < ApplicationController
     unless params[:log_file]
       redirect_to root_path
     else
-      begin
+      #begin
         @graph = generate_graph(params[:log_file])
-      rescue
-        redirect_to root_path
-      end
+        #rescue Exception => e
+        #redirect_to root_path
+        #end
     end
   end
 
