@@ -1,0 +1,14 @@
+=stylesheet_link_tag 'home.css'
+.main_container
+  .content_container
+    =form_tag graphs_index_path, :multipart => true do
+      .top
+        =file_field_tag 'log_file'
+        %h1
+          FreeCiv Graph Generator
+      %hr
+      .bottom
+        =submit_tag 'GENERATE', :onclick => "$('div.loader').show()"
+        .loader=image_tag 'ajax-loader.gif'
+        %h5
+          &copy;2011, Nelvin Driz

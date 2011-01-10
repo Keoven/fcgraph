@@ -1,4 +1,14 @@
 Fcgraph::Application.routes.draw do
+  get "graphs/new"
+  post "graphs/index"
+
+  match '/graphs', :to => "graphs#new"
+  match '/graphs/:anything',
+    :to => "graphs#new",
+    :constraints => { :anything => /.*/ }
+
+  root :to => "graphs#new"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

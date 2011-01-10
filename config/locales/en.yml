@@ -3,3 +3,30 @@
 
 en:
   hello: "Hello world"
+  graphs:
+    score: Civilization Score
+    pop: Population
+    bnp: Business
+    mfg: Manufacturing
+    cities: Cities
+    techs: Technologies
+    munits: Military Units
+    settlers: Settlers
+    wonders: Wonders
+    techout: Technological Output
+    landarea: Land Area
+    settledarea: Settled Area
+    pollution: Pollution
+    literacy: Literacy
+    spaceship: Spaceship
+    gold: Gold
+    taxrate: Tax Rate
+    scirate: Science Rate
+    luxrate: Luxury Rate
+    riots: Riots
+    happypop: Happy Population
+    contentpop: Content Population
+    unhappypop: Unhappy Population
+    specialists: Specialists
+    gov: Government
+    corruption: Corruption

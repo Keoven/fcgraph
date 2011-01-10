@@ -1,0 +1,51 @@
+* {
+  font-family: Verdana;
+  color: snow;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #111;
+}
+
+.content_container {
+  margin-top: 300px;
+  .top, .bottom {
+    margin: 0 auto;
+    width: 800px;
+  }
+
+  .top {
+    margin-bottom: 10px;
+    input {
+      float: left;
+      padding-top: 15px;
+    }
+    h1 {
+      text-align: right;
+    }
+  }
+
+  .bottom {
+    margin-top: 10px;
+    .loader {
+      display: none;
+      float: left;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+    input {
+      float: left;
+      background: #555;
+      border: 1px solid snow;
+      color: snow;
+      padding: 10px 60px;
+      &:hover {
+        color: black;
+        background: snow;
+      }
+    }
+    h5 { float: right; }
+  }
+}

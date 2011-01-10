@@ -1,0 +1,36 @@
+=javascript_include_tag 'jquery.idTabs.min.js'
+=javascript_include_tag 'swfobject.js'
+=stylesheet_link_tag 'graph.css'
+
+:javascript
+  $(document).ready(function () {
+    $('img.menu_head').click(function () {
+      $('ul.idTabs').slideToggle('medium');
+    });
+
+    $('ul.idTabs li a').mouseover(function () {
+      $(this).animate({ fontSize: "14px", paddingLeft: "20px" }, 50 );
+    });
+
+    $('ul.idTabs li a').mouseout(function () {
+      $(this).animate({ fontSize: "12px", paddingLeft: "10px" }, 50 );
+    });
+  });
+
+.main_container
+  .top_border
+  .content_container
+    =image_tag('navigation.png',
+       :size => '184x32',
+       :class => 'menu_head').html_safe
+    =@graph.html_safe
+  .description
+    %p
+      %strong='Game ID:'
+      ="#{@game_id}"
+  .bottom_border
+    %p
+      &copy;2011, Nelvin Driz
+    %p
+      Want to check out another log file? Go back to the
+      !="#{link_to('homepage', root_path)}."

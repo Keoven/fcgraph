@@ -1,11 +1,13 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'haml'
+
+group :development, :test do
+  gem "rspec-rails", ">= 2.3.1"
+  gem "ruby-debug19", :require => "ruby-debug"
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'

@@ -1,0 +1,39 @@
+* {
+  font-family: Verdana;
+  color: snow;
+  padding: 0;
+  margin: 0; }
+
+body {
+  background: #111; }
+
+.content_container {
+  margin-top: 300px; }
+  .content_container .top, .content_container .bottom {
+    margin: 0 auto;
+    width: 800px; }
+  .content_container .top {
+    margin-bottom: 10px; }
+    .content_container .top input {
+      float: left;
+      padding-top: 15px; }
+    .content_container .top h1 {
+      text-align: right; }
+  .content_container .bottom {
+    margin-top: 10px; }
+    .content_container .bottom .loader {
+      display: none;
+      float: left;
+      margin-left: 10px;
+      margin-top: 10px; }
+    .content_container .bottom input {
+      float: left;
+      background: #555;
+      border: 1px solid snow;
+      color: snow;
+      padding: 10px 60px; }
+      .content_container .bottom input:hover {
+        color: black;
+        background: snow; }
+    .content_container .bottom h5 {
+      float: right; }
