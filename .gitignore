@@ -6,3 +6,5 @@ tmp/**/*
 .rvmrc
 .rspec
 .sass-cache
+
+Gemfile.lock
