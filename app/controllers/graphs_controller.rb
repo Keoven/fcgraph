@@ -10,6 +10,7 @@ class GraphsController < ApplicationController
       begin
         @graph = generate_graph(params[:log_file])
       rescue Exception => e
+        logger.info(e.inspect)
         redirect_to root_path
       end
     end
@@ -34,7 +35,7 @@ class GraphsController < ApplicationController
         :text   => @turns[turn][:description],
         :colour => '#888888',
         :size   => 12,
-        :rotate => 70)
+        :rotate => 70) if @turns[turn]
     end
     x_labels.labels.map! do |label|
       label ||= ''
