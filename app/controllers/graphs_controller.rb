@@ -25,9 +25,8 @@ class GraphsController < ApplicationController
     tags = ['<ul class="idTabs">']
 
     x_labels = OFC2::XAxisLabels.new
-    step = @turns.size.to_s.length <= 1 ? 1 : (
-             10 ** (@turns.size.to_s.length - 2) * 3
-           )
+    step = find_step(@turns.size, 8)
+
     x_labels.labels = []
     0.upto(@turns.size/step) do |i|
       turn = i * step
@@ -76,16 +75,7 @@ class GraphsController < ApplicationController
         chart << line
       end
 
-      step = if max_value.to_s.length <= 1
-               1
-             elsif max_value <= 20
-               5
-             else
-               temp = 10 ** (max_value.to_s.length - 2) * 3
-               temp = 10 if temp.to_s.length <= 1
-               temp
-             end
-
+      step = find_step(max_value)
       chart.y_axis = OFC2::YAxis.new(
                        :min   => 0,
                        :max   => ((max_value/step) + 1).floor * step,
@@ -112,6 +102,24 @@ class GraphsController < ApplicationController
     tags.join + graphs.join
   end
 
+  def find_step(max, max_ylabel = 6)
+    ndigits = max.to_s.length
+    return 1 if ndigits <= 1
+
+    [5, 10, 20].each do |i|
+      return i if max <= i * max_ylabel
+    end if ndigits == 2
+
+    place = 10 ** (ndigits - 1)
+    if max > max_ylabel * place
+      2 * place
+    else
+      nzero = 10 ** (ndigits - 2)
+      max += 0.1 if max == nzero * 10
+      (((max.to_f/nzero).ceil).to_f / max_ylabel).ceil * nzero
+    end
+  end
+
   def parse_line(line)
     line = line.split
     case line[0]
@@ -130,9 +138,8 @@ class GraphsController < ApplicationController
       @players ||= {}
       player_name = line.drop(3).join(' ')
 
-      golden_ratio_conjugate = 0.618033988749895
-      h = (rand + golden_ratio_conjugate) % 1
-      s = (rand + golden_ratio_conjugate) % 1
+      h = random_golden_ratio
+      s = random_golden_ratio
       color = hsv_to_rgb(h, s, 0.95)
       @players[line[2].to_i] = {
         :add  => line[1].to_i,
@@ -151,6 +158,10 @@ class GraphsController < ApplicationController
         :value  => line[4].to_i
       }
     end
+  end
+
+  def random_golden_ratio
+    (rand + 0.618033988749895) % 1
   end
 
   ## HSV values in [0..1[
